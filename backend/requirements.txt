@@ -2,3 +2,5 @@ boto3
 aiofiles
 fastapi
 uvicorn
+sqlalchemy
+databases

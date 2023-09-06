@@ -1,13 +1,13 @@
 from fastapi import FastAPI
+from models import users as users_models
+from models import items as items_models
+from database import engine
+from routes import users, items
 
+
+users_models.Base.metadata.create_all(bind=engine)
+items_models.Base.metadata.create_all(bind=engine)
 app = FastAPI()
+app.include_router(users.router)
+app.include_router(items.router)
 
-
-@app.get("/")
-async def root():
-    return {"message": "Hello World"}
-
-
-@app.get("/hello/{name}")
-async def say_hello(name: str):
-    return {"message": f"Hello {name}"}
