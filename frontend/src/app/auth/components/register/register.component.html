@@ -2,26 +2,23 @@
   <div fxLayout="column" fxLayoutAlign="space-around center" fxLayoutGap="10px">
     <h1>Sign Up</h1>
     <div>
-      <a [routerLink]="['/login']">Have an account?</a>
+      <button mat-button color="accent" routerLink="['/login']">Have an account?</button>
     </div>
     <div>
       BackendErrors are here
     </div>
-    <input
-      type="text"
-      placeholder="Username"
-      formControlName="username"
-    />
-    <input
-      type="text"
-      placeholder="Email"
-      formControlName="email"
-    />
-    <input
-      type="password"
-      placeholder="Password"
-      formControlName="password"
-    />
+    <mat-form-field>
+      <mat-label>Username</mat-label>
+      <input matInput type="text" formControlName="username">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput type="text" formControlName="email">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input matInput type="password" formControlName="password">
+    </mat-form-field>
     <button mat-flat-button color="primary" type="submit">
       Sign up
     </button>
