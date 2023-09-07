@@ -1,1 +1,40 @@
-<p>register works!</p>
+<div fxLayout="column" fxLayoutAlign="space-around center">
+  <h1>Sign Up</h1>
+  <div>
+    <a [routerLink]="['/login']">Have an account?</a>
+  </div>
+  <div>
+    BackendErrors are here
+  </div>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <fieldset>
+      <fieldset class="form-group">
+        <input
+          type="text"
+          class="form-control form-control-lg"
+          placeholder="Username"
+          formControlName="username"
+        />
+      </fieldset>
+      <fieldset class="form-group">
+        <input
+          type="text"
+          class="form-control form-control-lg"
+          placeholder="Email"
+          formControlName="email"
+        />
+      </fieldset>
+      <fieldset class="form-group">
+        <input
+          type="password"
+          class="form-control form-control-lg"
+          placeholder="Password"
+          formControlName="password"
+        />
+      </fieldset>
+      <button mat-flat-button color="primary" type="submit">
+        Sign up
+      </button>
+    </fieldset>
+  </form>
+</div>
