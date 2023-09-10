@@ -7,6 +7,8 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
 
 import { RegisterComponent } from './components/register/register.component';
+import {reducers} from "./store/reducers";
+import {StoreModule} from "@ngrx/store";
 
 const routes = [
   {
@@ -22,6 +24,7 @@ const routes = [
     imports: [
         CommonModule,
         RouterModule.forChild(routes),
+        StoreModule.forFeature('auth', reducers),
         ReactiveFormsModule,
         FlexLayoutModule,
         MatButtonModule,
