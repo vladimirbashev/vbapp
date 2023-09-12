@@ -1,4 +1,6 @@
-from sqlalchemy import Column, Boolean, Integer, String
+from datetime import datetime
+
+from sqlalchemy import Column, Integer, String, DateTime
 from sqlalchemy.orm import relationship
 
 from database import Base
@@ -9,7 +11,12 @@ class User(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     email = Column(String, unique=True, index=True)
-    hashed_password = Column(String)
-    is_active = Column(Boolean, default=True)
+    username = Column(String)
+    password = Column(String)
+    createdAt = Column(DateTime, default=datetime.utcnow)
+    updatedAt = Column(DateTime, default=datetime.utcnow)
+    bio = Column(String, nullable=True)
+    image = Column(String, nullable=True)
+    token = Column(String)
 
     items = relationship("Item", back_populates="owner")

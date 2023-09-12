@@ -9,6 +9,8 @@ import { AppRoutingModule } from './app-routing.module';
 import {AuthModule} from "./auth/auth.module";
 import {environment} from "../environments/environment";
 import {MatToolbarModule} from "@angular/material/toolbar";
+import {HttpClientModule} from "@angular/common/http";
+
 
 @NgModule({
   declarations: [
@@ -18,6 +20,7 @@ import {MatToolbarModule} from "@angular/material/toolbar";
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     AuthModule,
     StoreModule.forRoot({}, {}),
     StoreDevtoolsModule.instrument({

@@ -5,6 +5,7 @@ import {registerAction} from "../../store/actions/register.actions";
 import {isSubmittingSelector} from "../../store/selectors";
 import {Observable} from "rxjs";
 
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',

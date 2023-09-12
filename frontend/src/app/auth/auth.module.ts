@@ -9,6 +9,7 @@ import {MatInputModule} from "@angular/material/input";
 import { RegisterComponent } from './components/register/register.component';
 import {reducers} from "./store/reducers";
 import {StoreModule} from "@ngrx/store";
+import {AuthService} from "./services/auth.service";
 
 const routes = [
   {
@@ -21,14 +22,15 @@ const routes = [
   declarations: [
     RegisterComponent
   ],
-    imports: [
-        CommonModule,
-        RouterModule.forChild(routes),
-        StoreModule.forFeature('auth', reducers),
-        ReactiveFormsModule,
-        FlexLayoutModule,
-        MatButtonModule,
-        MatInputModule
-    ]
+  imports: [
+      CommonModule,
+      RouterModule.forChild(routes),
+      StoreModule.forFeature('auth', reducers),
+      ReactiveFormsModule,
+      FlexLayoutModule,
+      MatButtonModule,
+      MatInputModule
+  ],
+  providers: [AuthService]
 })
 export class AuthModule { }

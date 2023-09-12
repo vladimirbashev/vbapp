@@ -1,5 +1,6 @@
+import datetime
+from uuid import uuid4
 from sqlalchemy.orm import Session
-
 from schemas import users as schemas
 from models import users as models
 
@@ -17,8 +18,14 @@ def get_users(db: Session, skip: int = 0, limit: int = 100):
 
 
 def create_user(db: Session, user: schemas.UserCreate):
-    fake_hashed_password = user.password + "notreallyhashed"
-    db_user = models.User(email=user.email, hashed_password=fake_hashed_password)
+    db_user = models.User(
+        email=user.email,
+        username=user.username,
+        password=user.password,
+        createdAt=datetime.datetime.now(),
+        updatedAt=datetime.datetime.now(),
+        token=str(uuid4())
+    )
     db.add(db_user)
     db.commit()
     db.refresh(db_user)
