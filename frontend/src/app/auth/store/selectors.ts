@@ -10,8 +10,8 @@ export const isSubmittingSelector = createSelector(
   (authState: AuthStateInterface) => authState.isSubmitting
 )
 
-export const validationErrorsSelector = createSelector(
+export const backendErrorsSelector = createSelector(
   authFeatureSelector,
-  (authState: AuthStateInterface) => authState.validationErrors
+  (authState: AuthStateInterface) => authState.backendErrors
 )
 

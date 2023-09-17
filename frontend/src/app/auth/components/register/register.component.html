@@ -4,9 +4,7 @@
     <button mat-button color="accent" routerLink="['/login']">
       Have an account?
     </button>
-    <div class="errors" *ngIf="validationErrors$ | async">
-      {{validationErrors$ | async | json}}
-    </div>
+    <app-backend-error-messages [value]="backendErrors$ | async"></app-backend-error-messages>
     <mat-form-field>
       <mat-label>Username</mat-label>
       <input matInput type="text" formControlName="username">

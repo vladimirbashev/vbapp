@@ -1,10 +1,11 @@
 import {CurrentUserInterface} from "../../shared/types/currentUser.interface";
+import {backendErrorsSelector} from "../store/selectors";
 
 
 export interface AuthStateInterface {
   isSubmitting: boolean
   currentUser: CurrentUserInterface | null
   isLoggedIn: boolean | null
-  validationErrors: any | null
+  backendErrors: any | null
 }
 

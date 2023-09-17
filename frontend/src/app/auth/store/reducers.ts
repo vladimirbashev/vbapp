@@ -6,7 +6,7 @@ import {AuthStateInterface} from "../types/authState.interface";
 const initialState: AuthStateInterface = {
   isSubmitting: false,
   currentUser: null,
-  validationErrors: null,
+  backendErrors: null,
   isLoggedIn: null
 }
 
@@ -17,7 +17,7 @@ const authReducer = createReducer(
     (state): AuthStateInterface => ({
       ...state,
       isSubmitting: true,
-      validationErrors: null
+      backendErrors: null
     })
   ),
   on(
@@ -34,7 +34,7 @@ const authReducer = createReducer(
     (state, action): AuthStateInterface => ({
       ...state,
       isSubmitting: false,
-      validationErrors: action.detail
+      backendErrors: action.detail
     })
   )
 )

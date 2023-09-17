@@ -12,6 +12,7 @@ import {StoreModule} from "@ngrx/store";
 import {AuthService} from "./services/auth.service";
 import {RegisterEffect} from "./store/effects/register.effect";
 import {EffectsModule} from "@ngrx/effects";
+import {BackendErrorMessagesModule} from "../shared/modules/backend-error-messages/backend-error-messages.module";
 
 const routes = [
   {
@@ -32,7 +33,8 @@ const routes = [
     ReactiveFormsModule,
     FlexLayoutModule,
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
+    BackendErrorMessagesModule
   ],
   providers: [AuthService]
 })
