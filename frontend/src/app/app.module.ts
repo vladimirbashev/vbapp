@@ -10,6 +10,7 @@ import {AuthModule} from "./auth/auth.module";
 import {environment} from "../environments/environment";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {HttpClientModule} from "@angular/common/http";
+import { EffectsModule } from '@ngrx/effects';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import {HttpClientModule} from "@angular/common/http";
       logOnly: environment.production
     }),
     StoreDevtoolsModule.instrument({maxAge: 25, logOnly: !isDevMode()}),
-    MatToolbarModule
+    MatToolbarModule,
+    EffectsModule.forRoot([])
   ],
   providers: [],
   bootstrap: [AppComponent]

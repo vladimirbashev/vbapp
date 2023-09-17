@@ -10,6 +10,8 @@ import { RegisterComponent } from './components/register/register.component';
 import {reducers} from "./store/reducers";
 import {StoreModule} from "@ngrx/store";
 import {AuthService} from "./services/auth.service";
+import {RegisterEffect} from "./store/effects/register.effect";
+import {EffectsModule} from "@ngrx/effects";
 
 const routes = [
   {
@@ -23,13 +25,14 @@ const routes = [
     RegisterComponent
   ],
   imports: [
-      CommonModule,
-      RouterModule.forChild(routes),
-      StoreModule.forFeature('auth', reducers),
-      ReactiveFormsModule,
-      FlexLayoutModule,
-      MatButtonModule,
-      MatInputModule
+    CommonModule,
+    RouterModule.forChild(routes),
+    StoreModule.forFeature('auth', reducers),
+    EffectsModule.forFeature([RegisterEffect]),
+    ReactiveFormsModule,
+    FlexLayoutModule,
+    MatButtonModule,
+    MatInputModule
   ],
   providers: [AuthService]
 })
