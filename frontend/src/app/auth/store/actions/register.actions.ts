@@ -3,6 +3,7 @@ import {ActionTypes} from 'src/app/auth/store/actionTypes'
 import {RegisterRequestInterface} from "../../types/registerRequest.interface";
 import {CurrentUserInterface} from "../../../shared/types/currentUser.interface";
 
+
 export const registerAction = createAction(
   ActionTypes.REGISTER,
   props<{request: RegisterRequestInterface}>()
@@ -13,4 +14,6 @@ export const registerSuccessAction = createAction(
   props<{currentUser: CurrentUserInterface}>()
 )
 
-export const registerFailureAction = createAction(ActionTypes.REGISTER_FAILURE)
+export const registerFailureAction = createAction(
+  ActionTypes.REGISTER_FAILURE,
+  props<{detail: any}>())

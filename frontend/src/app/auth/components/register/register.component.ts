@@ -2,9 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {select, Store} from '@ngrx/store'
 import {registerAction} from "../../store/actions/register.actions";
-import {isSubmittingSelector} from "../../store/selectors";
+import {isSubmittingSelector, validationErrorsSelector} from "../../store/selectors";
 import {Observable} from "rxjs";
 import {RegisterRequestInterface} from "../../types/registerRequest.interface";
+import {map} from "rxjs/operators";
 
 
 @Component({
@@ -15,6 +16,7 @@ import {RegisterRequestInterface} from "../../types/registerRequest.interface";
 export class RegisterComponent implements OnInit {
   form: FormGroup
   isSubmitting$: Observable<boolean>
+  validationErrors$: Observable<any>
 
   constructor(private fb: FormBuilder, private store: Store) {}
 
@@ -34,6 +36,12 @@ export class RegisterComponent implements OnInit {
 
   initializeValues(): void {
     this.isSubmitting$ = this.store.pipe(select(isSubmittingSelector))
+    this.validationErrors$ = this.store.pipe(
+      select(validationErrorsSelector),
+      map((error) => {
+        return error && typeof error !== 'string' ? 'Internal error' : error
+      })
+    )
   }
 
   onSubmit(): void {
