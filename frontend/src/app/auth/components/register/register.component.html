@@ -4,7 +4,7 @@
     <button mat-button color="accent" routerLink="['/login']">
       Have an account?
     </button>
-    <div *ngIf="validationErrors$ | async">
+    <div class="errors" *ngIf="validationErrors$ | async">
       {{validationErrors$ | async | json}}
     </div>
     <mat-form-field>
