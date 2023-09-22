@@ -6,7 +6,7 @@ import {Router} from '@angular/router'
 import {of} from 'rxjs'
 
 import {AuthService} from 'src/app/auth/services/auth.service'
-import {CurrentUserInterface} from 'src/app/shared/types/currentUser.interface'
+import {UserInterface} from 'src/app/shared/types/user.interface'
 import {PersistanceService} from 'src/app/shared/services/persistance.service'
 import {
   loginAction,

@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core'
 import {createEffect, Actions, ofType} from '@ngrx/effects'
 import {map, catchError, switchMap, tap} from 'rxjs/operators'
 import {AuthService} from '../../services/auth.service'
-import {CurrentUserInterface} from 'src/app/shared/types/currentUser.interface'
+import {UserInterface} from 'src/app/shared/types/user.interface'
 import {of} from 'rxjs'
 import {registerAction, registerFailureAction, registerSuccessAction} from "../actions/register.actions";
 import {HttpErrorResponse} from "@angular/common/http";
@@ -16,7 +16,7 @@ export class RegisterEffect {
       ofType(registerAction),
       switchMap(({request}) => {
         return this.authService.register(request).pipe(
-          map((currentUser: CurrentUserInterface) => {
+          map((currentUser: UserInterface) => {
             // this.persistanceService.set('accessToken', currentUser.token)
             return registerSuccessAction({currentUser})
           }),

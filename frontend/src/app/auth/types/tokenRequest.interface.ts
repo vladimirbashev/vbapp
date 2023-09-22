@@ -1,6 +1,4 @@
 export interface TokenRequestInterface {
-  user: {
-    username: string
-    password: string
-  }
+  username: string
+  password: string
 }

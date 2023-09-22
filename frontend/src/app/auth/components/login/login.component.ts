@@ -40,9 +40,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const request: TokenRequestInterface = {
-      user: this.form.value
-    }
-    this.store.dispatch(loginAction({request}))
+    const request: TokenRequestInterface = this.form.value;
+    this.store.dispatch(loginAction({request}));
   }
 }

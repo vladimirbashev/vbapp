@@ -1,4 +1,4 @@
-export interface CurrentUserInterface {
+export interface UserInterface {
   id: number
   email: string
   createdAt: string
@@ -6,5 +6,4 @@ export interface CurrentUserInterface {
   username: string
   bio: string | null
   image: string | null
-  token: string
 }

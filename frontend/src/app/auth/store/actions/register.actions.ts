@@ -1,7 +1,7 @@
 import {createAction, props} from '@ngrx/store'
 import {ActionTypes} from 'src/app/auth/store/actionTypes'
 import {RegisterRequestInterface} from "../../types/registerRequest.interface";
-import {CurrentUserInterface} from "../../../shared/types/currentUser.interface";
+import {UserInterface} from "../../../shared/types/user.interface";
 
 
 export const registerAction = createAction(
@@ -11,7 +11,7 @@ export const registerAction = createAction(
 
 export const registerSuccessAction = createAction(
   ActionTypes.REGISTER_SUCCESS,
-  props<{currentUser: CurrentUserInterface}>()
+  props<{currentUser: UserInterface}>()
 )
 
 export const registerFailureAction = createAction(

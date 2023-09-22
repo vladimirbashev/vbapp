@@ -41,9 +41,7 @@ export class RegisterComponent implements OnInit {
   onSubmit(): void {
     if (this.form.valid) {
       console.log('submit', this.form.value, this.form.valid);
-      const request: RegisterRequestInterface = {
-        user: this.form.value
-      };
+      const request: RegisterRequestInterface = this.form.value;
       this.store.dispatch(registerAction({request}));
     }
   }
