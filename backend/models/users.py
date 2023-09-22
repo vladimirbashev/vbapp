@@ -17,6 +17,5 @@ class User(Base):
     updatedAt = Column(DateTime, default=datetime.utcnow)
     bio = Column(String, nullable=True)
     image = Column(String, nullable=True)
-    token = Column(String)
 
     items = relationship("Item", back_populates="owner")

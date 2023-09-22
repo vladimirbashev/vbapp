@@ -16,7 +16,7 @@ def get_user_by_email(db: Session, email: str):
 
 
 def get_user_by_username(db: Session, username: str):
-    return db.query(models.User).filter(models.User.email == username).first()
+    return db.query(models.User).filter(models.User.username == username).first()
 
 
 def get_users(db: Session, skip: int = 0, limit: int = 100):
@@ -29,8 +29,7 @@ def create_user(db: Session, user: schemas.UserCreate):
         username=user.username,
         password=get_hashed_password(user.password),
         createdAt=datetime.datetime.now(),
-        updatedAt=datetime.datetime.now(),
-        token=create_access_token(user.username)
+        updatedAt=datetime.datetime.now()
     )
     db.add(db_user)
     db.commit()

@@ -20,7 +20,6 @@ class User(UserBase):
     updatedAt: datetime
     bio: Optional[str] = None
     image: Optional[str] = None
-    token: str
     items: list[Item] = []
 
     class Config:

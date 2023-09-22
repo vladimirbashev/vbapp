@@ -12,7 +12,7 @@ from schemas.token import TokenSchema
 router = APIRouter()
 
 
-@router.post("/login", response_model=TokenSchema)
+@router.post("/token", response_model=TokenSchema)
 async def login(form_data: Annotated[OAuth2PasswordRequestForm, Depends()], db: Session = Depends(get_db)):
     user = get_user_by_username(db, form_data.username)
     if not user:

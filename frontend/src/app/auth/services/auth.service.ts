@@ -7,6 +7,8 @@ import {RegisterRequestInterface} from 'src/app/auth/types/registerRequest.inter
 import {CurrentUserInterface} from 'src/app/shared/types/currentUser.interface'
 import {environment} from 'src/environments/environment'
 import {AuthResponseInterface} from 'src/app/auth/types/authResponse.interface'
+import {TokenRequestInterface} from "../types/tokenRequest.interface";
+import {TokenResponseInterface} from "../types/tokenResponseInterface";
 
 @Injectable()
 export class AuthService {
@@ -16,5 +18,14 @@ export class AuthService {
     const url = environment.apiUrl + '/users/'
     return this.http
       .post<CurrentUserInterface>(url, data.user)
+  }
+
+  login(data: TokenRequestInterface): Observable<TokenResponseInterface> {
+    const url = environment.apiUrl + '/token'
+    let fd = new FormData()
+    fd.append('username', data.user.username)
+    fd.append('password', data.user.username)
+    return this.http
+      .post<TokenResponseInterface>(url, fd)
   }
 }

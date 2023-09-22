@@ -5,7 +5,6 @@ import {registerAction} from "../../store/actions/register.actions";
 import {isSubmittingSelector, backendErrorsSelector} from "../../store/selectors";
 import {Observable} from "rxjs";
 import {RegisterRequestInterface} from "../../types/registerRequest.interface";
-import {map} from "rxjs/operators";
 
 
 @Component({
