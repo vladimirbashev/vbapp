@@ -1,12 +1,17 @@
+from typing import Annotated
 from fastapi import Depends, APIRouter, HTTPException
+
+from auth.deps import get_current_user
 from crud import users as crud
 from schemas import users as schemas
 from sqlalchemy.orm import Session
 
 from config import get_db
+from schemas.users import User
 
 router = APIRouter()
-
+# user: SystemUser = Depends(get_current_user)
+# current_user: Annotated[User, Depends(get_current_user)]
 
 @router.post("/users/", response_model=schemas.User)
 def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
@@ -17,7 +22,8 @@ def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
 
 
 @router.get("/users/", response_model=list[schemas.User])
-def read_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+def read_users(current_user: Annotated[User, Depends(get_current_user)], skip: int = 0, limit: int = 100,
+               db: Session = Depends(get_db)):
     users = crud.get_users(db, skip=skip, limit=limit)
     return users
 
