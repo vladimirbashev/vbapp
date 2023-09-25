@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BackendErrorMessagesComponent } from './backend-error-messages.component';
+import { BackendErrorMessagesComponent } from './backendErrorMessages.component';
 
 describe('BackendErrorMessagesComponent', () => {
   let component: BackendErrorMessagesComponent;
