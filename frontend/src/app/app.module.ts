@@ -13,6 +13,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { EffectsModule } from '@ngrx/effects';
 import {PersistanceService} from "./shared/services/persistance.service";
 import {AuthInterceptor} from "./shared/services/authinterceptor.service";
+import {AppBarModule} from "./shared/modules/app-bar/app-bar.module";
 
 
 @NgModule({
@@ -32,7 +33,9 @@ import {AuthInterceptor} from "./shared/services/authinterceptor.service";
     }),
     StoreDevtoolsModule.instrument({maxAge: 25, logOnly: !isDevMode()}),
     MatToolbarModule,
-    EffectsModule.forRoot([])
+    EffectsModule.forRoot([]),
+
+    AppBarModule
   ],
   providers: [
     PersistanceService,

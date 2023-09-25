@@ -1,0 +1,23 @@
+<mat-toolbar>
+  <span>vbapp</span>
+  <button mat-button color="primary" [routerLink]="['/']">
+    Home
+  </button>
+  <button *ngIf="isLoggedIn$ | async" mat-button color="primary" [routerLink]="['/articles/new']">
+    New Post
+  </button>
+  <span class="flexExpand"></span>
+  <button *ngIf="isLoggedIn$ | async" mat-button color="primary"
+          [routerLink]="['/profiles', (currentUser$ | async).id]">
+    {{(currentUser$ | async).email}}
+  </button>
+  <button *ngIf="isLoggedIn$ | async" mat-button color="primary" [routerLink]="['/logout']">
+    Log Out
+  </button>
+  <button *ngIf="isAnonymous$ | async" mat-button color="primary" [routerLink]="['/login']">
+    Sign In
+  </button>
+  <button *ngIf="isAnonymous$ | async" mat-button color="primary" [routerLink]="['/register']">
+    Register
+  </button>
+</mat-toolbar>

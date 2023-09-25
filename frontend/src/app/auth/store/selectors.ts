@@ -15,3 +15,17 @@ export const backendErrorsSelector = createSelector(
   (authState: AuthStateInterface) => authState.backendErrors
 )
 
+export const isLoggedInSelector = createSelector(
+  authFeatureSelector,
+  (authState: AuthStateInterface) => !!authState.currentUser
+)
+
+export const isAnonymousSelector = createSelector(
+  authFeatureSelector,
+  (authState: AuthStateInterface) => !authState.currentUser
+)
+
+export const currentUserSelector = createSelector(
+  authFeatureSelector,
+  (authState: AuthStateInterface) => authState.currentUser
+)
