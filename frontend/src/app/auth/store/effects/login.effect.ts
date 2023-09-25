@@ -14,6 +14,7 @@ import {
   loginFailureAction
 } from 'src/app/auth/store/actions/login.action'
 import {TokenResponseInterface} from "../../types/tokenResponseInterface";
+import {currentUserAction} from "../actions/currentUser.action";
 
 @Injectable()
 export class LoginEffect {
@@ -39,17 +40,13 @@ export class LoginEffect {
     () =>
       this.actions$.pipe(
         ofType(loginSuccessAction),
-        tap(() => {
-          this.router.navigateByUrl('/')
-        })
-      ),
-    {dispatch: false}
+        map(() => currentUserAction())
+      )
   )
 
   constructor(
     private actions$: Actions,
     private authService: AuthService,
     private persistanceService: PersistanceService,
-    private router: Router
   ) {}
 }

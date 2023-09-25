@@ -17,6 +17,12 @@ export class AuthService {
     return this.http.post<UserInterface>(url, data)
   }
 
+
+  getCurrentUser(): Observable<UserInterface> {
+    const url = environment.apiUrl + '/users/me/'
+    return this.http.get<UserInterface>(url)
+  }
+
   login(data: TokenRequestInterface): Observable<TokenResponseInterface> {
     const url = environment.apiUrl + '/token'
     let fd = new FormData()

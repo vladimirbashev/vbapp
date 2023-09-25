@@ -9,8 +9,10 @@ import { AppRoutingModule } from './app-routing.module';
 import {AuthModule} from "./auth/auth.module";
 import {environment} from "../environments/environment";
 import {MatToolbarModule} from "@angular/material/toolbar";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { EffectsModule } from '@ngrx/effects';
+import {PersistanceService} from "./shared/services/persistance.service";
+import {AuthInterceptor} from "./shared/services/authinterceptor.service";
 
 
 @NgModule({
@@ -32,7 +34,14 @@ import { EffectsModule } from '@ngrx/effects';
     MatToolbarModule,
     EffectsModule.forRoot([])
   ],
-  providers: [],
+  providers: [
+    PersistanceService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

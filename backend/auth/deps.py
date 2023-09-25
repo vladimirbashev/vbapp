@@ -42,6 +42,6 @@ async def get_current_user(token: str = Depends(reuseable_oauth), db: Session = 
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
             detail="Could not find user",
+            headers={"WWW-Authenticate": "Bearer"},
         )
-    # return User(**user)
     return user
