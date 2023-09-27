@@ -1,55 +1,33 @@
 version: '3.5'
-
 services:
-  postgres:
-    image: postgres:13
-    restart: always
-    environment:
-      POSTGRES_DB: keycloak
-      POSTGRES_USER: keycloak
-      POSTGRES_PASSWORD: keycloak
-    volumes:
-      - type: volume
-        source: postgres-volume
-        target: /var/lib/postgresql/data
-
-  keycloak:
-    depends_on:
-      - postgres
-    image: jboss/keycloak:13.0.0
-    command: [ "-Dkeycloak.migration.strategy=IGNORE_EXISTING" ]
-    restart: always
+  backend:
+    image: backend
+    build:
+      dockerfile: Dockerfile
+      context: ./backend
+    ports:
+      - 8000:8000
+  frontend:
+    image: frontend
+    build:
+      dockerfile: Dockerfile
+      context: ./frontend
     ports:
       - 8080:8080
-    environment:
-      KEYCLOAK_USER: admin
-      KEYCLOAK_PASSWORD: admin
-      KEYCLOAK_IMPORT: /tmp/chatbot.json
-      # KEYCLOAK_LOGLEVEL: DEBUG
-      # PROXY_ADDRESS_FORWARDING: 'true'
-      KEYCLOAK_FRONTEND_URL: https://cms.local/auth
-      DB_USER: keycloak
-      DB_PASSWORD: keycloak
-      DB_ADDR: postgres
+  proxy:
+    image: nginx:alpine
+    depends_on:
+      - backend
+      - frontend
+    ports:
+      - 81:81
     volumes:
-      - type: volume
-        source: keycloak-volume
-        target: /opt/jboss/keycloak/standalone/data
       - type: bind
-        source: ./keycloak/chatbot.json
-        target: /tmp/chatbot.json
-
-  angular:
-    image: kb-dms
-    build:
-      dockerfile: docker/Dockerfile.angular
-      context: .
-    restart: always
-    depends_on: 
-      - keycloak
-    ports: 
-      - 9999:80
-
-volumes:
-  keycloak-volume:
-  postgres-volume:
+        source: ./proxy/nginx-proxy.conf
+        target: /etc/nginx/conf.d/proxy.conf
+      - type: bind
+        source: ./proxy/app.crt
+        target: /etc/ssl/certs/app.crt
+      - type: bind
+        source: ./proxy/app.key
+        target: /etc/ssl/private/app.key
