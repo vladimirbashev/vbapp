@@ -13,13 +13,13 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   register(data: RegisterRequestInterface): Observable<UserInterface> {
-    const url = environment.apiUrl + '/users/'
+    const url = environment.apiUrl + '/users'
     return this.http.post<UserInterface>(url, data)
   }
 
 
   getCurrentUser(): Observable<UserInterface> {
-    const url = environment.apiUrl + '/users/me/'
+    const url = environment.apiUrl + '/users/me'
     return this.http.get<UserInterface>(url)
   }
 
