@@ -13,8 +13,8 @@ class User(Base):
     email = Column(String, unique=True, index=True)
     username = Column(String)
     password = Column(String)
-    createdAt = Column(DateTime, default=datetime.utcnow)
-    updatedAt = Column(DateTime, default=datetime.utcnow)
+    createdat = Column(DateTime, default=datetime.utcnow)
+    updatedat = Column(DateTime, default=datetime.utcnow)
     bio = Column(String, nullable=True)
     image = Column(String, nullable=True)
 

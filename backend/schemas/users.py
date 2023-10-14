@@ -16,8 +16,8 @@ class UserCreate(UserBase):
 
 class User(UserBase):
     id: int
-    createdAt: datetime
-    updatedAt: datetime
+    createdat: datetime
+    updatedat: datetime
     bio: Optional[str] = None
     image: Optional[str] = None
     items: list[Item] = []
