@@ -1,9 +1,6 @@
 from fastapi import FastAPI
-from models import Base
-from models.database import engine
+from database import engine
 from routes import users, items, token
-
-Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 app.include_router(token.router, prefix='/api')

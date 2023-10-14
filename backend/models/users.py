@@ -3,7 +3,7 @@ from datetime import datetime
 from sqlalchemy import Column, Integer, String, DateTime
 from sqlalchemy.orm import relationship
 
-from models import Base
+from database import Base
 
 
 class User(Base):
