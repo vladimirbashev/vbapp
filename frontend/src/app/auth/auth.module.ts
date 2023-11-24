@@ -17,6 +17,7 @@ import {PersistanceService} from "../shared/services/persistance.service";
 import {LoginComponent} from "./components/login/login.component";
 import {LoginEffect} from "./store/effects/login.effect";
 import {CurrentUserEffect} from "./store/effects/currentUser.effect";
+import {JWT_OPTIONS, JwtHelperService} from "@auth0/angular-jwt";
 
 const routes = [
   {
@@ -43,8 +44,13 @@ const routes = [
     FlexLayoutModule,
     MatButtonModule,
     MatInputModule,
-    BackendErrorMessagesModule
+    BackendErrorMessagesModule,
   ],
-  providers: [AuthService, PersistanceService]
+  providers: [
+    AuthService,
+    PersistanceService,
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    JwtHelperService
+  ]
 })
 export class AuthModule { }

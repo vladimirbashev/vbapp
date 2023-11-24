@@ -7,10 +7,11 @@ import {UserInterface} from 'src/app/shared/types/user.interface'
 import {environment} from 'src/environments/environment'
 import {TokenRequestInterface} from "../types/tokenRequest.interface";
 import {TokenResponseInterface} from "../types/tokenResponseInterface";
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable()
 export class AuthService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, public jwtHelper: JwtHelperService) {}
 
   register(data: RegisterRequestInterface): Observable<UserInterface> {
     const url = environment.apiUrl + '/users/'
@@ -29,5 +30,12 @@ export class AuthService {
     fd.append('username', data.username)
     fd.append('password', data.password)
     return this.http.post<TokenResponseInterface>(url, fd)
+  }
+
+  public isAuthenticated(): boolean {
+    const token = localStorage.getItem('accessToken');
+    // Check whether the token is expired and return
+    // true or false
+    return !this.jwtHelper.isTokenExpired(token);
   }
 }

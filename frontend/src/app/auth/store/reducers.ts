@@ -19,15 +19,15 @@ const authReducer = createReducer(
     (state): AuthStateInterface => ({
       ...state,
       isSubmitting: true,
-      backendErrors: null
+      backendErrors: null,
+      isLoggedIn: false,
     })
   ),
   on(
     registerSuccessAction,
     (state, action): AuthStateInterface => ({
       ...state,
-      isSubmitting: false,
-      isLoggedIn: false,
+      isSubmitting: false
     })
   ),
   on(
@@ -43,7 +43,8 @@ const authReducer = createReducer(
     (state): AuthStateInterface => ({
       ...state,
       isSubmitting: true,
-      backendErrors: null
+      backendErrors: null,
+      isLoggedIn: false,
     })
   ),
   on(

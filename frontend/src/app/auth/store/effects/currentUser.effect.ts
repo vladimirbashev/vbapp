@@ -44,16 +44,16 @@ export class CurrentUserEffect {
   //   {dispatch: false}
   // )
 
-  redirectAfterSubmit$ = createEffect(
-    () =>
-      this.actions$.pipe(
-        ofType(currentUserSuccessAction),
-        tap(() => {
-          this.router.navigateByUrl('/')
-        })
-      ),
-    {dispatch: false}
-  )
+  // redirectAfterSubmit$ = createEffect(
+  //   () =>
+  //     this.actions$.pipe(
+  //       ofType(currentUserSuccessAction),
+  //       tap(() => {
+  //         this.router.navigateByUrl('/')
+  //       })
+  //     ),
+  //   {dispatch: false}
+  // )
 
   constructor(
     private actions$: Actions,
