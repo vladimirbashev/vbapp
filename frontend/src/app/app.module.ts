@@ -14,6 +14,7 @@ import { EffectsModule } from '@ngrx/effects';
 import {PersistanceService} from "./shared/services/persistance.service";
 import {AuthInterceptor} from "./shared/services/authinterceptor.service";
 import {AppBarModule} from "./shared/modules/app-bar/app-bar.module";
+import {GlobalFeedModule} from "./global-feed/global-feed.module";
 
 
 @NgModule({
@@ -34,8 +35,8 @@ import {AppBarModule} from "./shared/modules/app-bar/app-bar.module";
     StoreDevtoolsModule.instrument({maxAge: 25, logOnly: !isDevMode()}),
     MatToolbarModule,
     EffectsModule.forRoot([]),
-
-    AppBarModule
+    AppBarModule,
+    GlobalFeedModule
   ],
   providers: [
     PersistanceService,
