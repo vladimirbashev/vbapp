@@ -8,10 +8,12 @@ import {environment} from 'src/environments/environment'
 import {TokenRequestInterface} from "../types/tokenRequest.interface";
 import {TokenResponseInterface} from "../types/tokenResponseInterface";
 import { JwtHelperService } from '@auth0/angular-jwt';
+import {PersistanceService} from "../../shared/services/persistance.service";
 
 @Injectable()
 export class AuthService {
-  constructor(private http: HttpClient, public jwtHelper: JwtHelperService) {}
+  constructor(private http: HttpClient, public jwtHelper: JwtHelperService,
+              private persistanceService: PersistanceService) {}
 
   register(data: RegisterRequestInterface): Observable<UserInterface> {
     const url = environment.apiUrl + '/users/'
@@ -33,7 +35,8 @@ export class AuthService {
   }
 
   public isAuthenticated(): boolean {
-    const token = localStorage.getItem('accessToken');
+    // const token = localStorage.getItem('accessToken');
+    const token = this.persistanceService.get('accessToken');
     // Check whether the token is expired and return
     // true or false
     return !this.jwtHelper.isTokenExpired(token);
