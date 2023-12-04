@@ -29,7 +29,7 @@ export class RegisterEffect {
     )
   )
 
-  redirectAfterSubmit$ = createEffect(
+  redirectAfterRegister$ = createEffect(
     () =>
       this.actions$.pipe(
         ofType(registerSuccessAction),

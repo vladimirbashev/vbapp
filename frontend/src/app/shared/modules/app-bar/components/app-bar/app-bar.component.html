@@ -11,7 +11,7 @@
           [routerLink]="['/profiles', (currentUser$ | async).id]">
     {{(currentUser$ | async).email}}
   </button>
-  <button *ngIf="isLoggedIn$ | async" mat-button color="primary" [routerLink]="['/logout']">
+  <button *ngIf="isLoggedIn$ | async" mat-button color="primary" (click)="onLogout()">
     Log Out
   </button>
   <button *ngIf="isAnonymous$ | async" mat-button color="primary" [routerLink]="['/login']">

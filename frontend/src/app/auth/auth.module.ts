@@ -18,6 +18,7 @@ import {LoginComponent} from "./components/login/login.component";
 import {LoginEffect} from "./store/effects/login.effect";
 import {CurrentUserEffect} from "./store/effects/currentUser.effect";
 import {JWT_OPTIONS, JwtHelperService} from "@auth0/angular-jwt";
+import {LogoutEffect} from "./store/effects/logout.effect";
 
 const routes = [
   {
@@ -39,11 +40,17 @@ const routes = [
     CommonModule,
     RouterModule.forChild(routes),
     StoreModule.forFeature('auth', reducers),
-    EffectsModule.forFeature([RegisterEffect, LoginEffect, CurrentUserEffect]),
+    EffectsModule.forFeature([
+      RegisterEffect,
+      LoginEffect,
+      LogoutEffect,
+      CurrentUserEffect
+    ]),
     ReactiveFormsModule,
     FlexLayoutModule,
     MatButtonModule,
     MatInputModule,
+
     BackendErrorMessagesModule,
   ],
   providers: [

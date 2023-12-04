@@ -36,7 +36,7 @@ export class LoginEffect {
     )
   )
 
-  redirectAfterSubmit$ = createEffect(
+  getCurrentUser$ = createEffect(
     () =>
       this.actions$.pipe(
         ofType(loginSuccessAction),

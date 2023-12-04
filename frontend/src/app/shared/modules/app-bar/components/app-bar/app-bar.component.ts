@@ -7,6 +7,8 @@ import {
   currentUserSelector
 } from 'src/app/auth/store/selectors'
 import {UserInterface} from "../../../../types/user.interface";
+import {currentUserAction} from "../../../../../auth/store/actions/currentUser.action";
+import {logoutAction} from "../../../../../auth/store/actions/logout.action";
 
 
 @Component({
@@ -24,5 +26,9 @@ export class AppBarComponent implements OnInit {
     this.isLoggedIn$ = this.store.pipe(select(isLoggedInSelector))
     this.isAnonymous$ = this.store.pipe(select(isAnonymousSelector))
     this.currentUser$ = this.store.pipe(select(currentUserSelector))
+  }
+
+  onLogout() {
+    this.store.dispatch(logoutAction())
   }
 }

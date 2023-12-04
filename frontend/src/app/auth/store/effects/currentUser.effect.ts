@@ -13,6 +13,7 @@ import {
   currentUserFailureAction
 } from 'src/app/auth/store/actions/currentUser.action'
 import {UserInterface} from "../../../shared/types/user.interface";
+import {logoutAction} from "../actions/logout.action";
 
 
 @Injectable()
@@ -34,26 +35,23 @@ export class CurrentUserEffect {
     )
   )
 
-  // currentUserFailure$ = createEffect(() =>
-  //   this.actions$.pipe(
-  //     ofType(currentUserFailureAction),
-  //     tap(() => {
-  //       this.persistanceService.set('accessToken', null)
-  //     })
-  //   ),
-  //   {dispatch: false}
-  // )
+  currentUserFailure$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(currentUserFailureAction),
+      map(() => logoutAction())
+    )
+  )
 
-  // redirectAfterSubmit$ = createEffect(
-  //   () =>
-  //     this.actions$.pipe(
-  //       ofType(currentUserSuccessAction),
-  //       tap(() => {
-  //         this.router.navigateByUrl('/')
-  //       })
-  //     ),
-  //   {dispatch: false}
-  // )
+  redirectAfterLoggedIn$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(currentUserSuccessAction),
+        tap(() => {
+          this.router.navigateByUrl('/')
+        })
+      ),
+    {dispatch: false}
+  )
 
   constructor(
     private actions$: Actions,
