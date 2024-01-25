@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core'
 import {createEffect, Actions, ofType} from '@ngrx/effects'
-import {map, tap} from 'rxjs/operators'
+import {catchError, map, tap} from 'rxjs/operators'
 
 import {PersistanceService} from 'src/app/shared/services/persistance.service'
 import {
@@ -9,6 +9,8 @@ import {
   logoutFailureAction
 } from 'src/app/auth/store/actions/logout.action'
 import {Router} from "@angular/router";
+import {HttpErrorResponse} from "@angular/common/http";
+import {of} from "rxjs";
 
 
 @Injectable()
@@ -19,6 +21,10 @@ export class LogoutEffect {
       map(() => {
         this.persistanceService.remove('accessToken')
         return logoutSuccessAction()
+      }),
+
+      catchError((errorResponse: HttpErrorResponse) => {
+        return of(logoutFailureAction({detail: errorResponse.error.detail || errorResponse.error}))
       })
     )
   )

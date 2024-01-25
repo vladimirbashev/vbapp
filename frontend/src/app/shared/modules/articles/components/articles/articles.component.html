@@ -3,10 +3,7 @@
 <div *ngIf="error$ | async">Some error happened...</div>
 
 <div *ngIf="articles$ | async">
-  <div
-    class="article-preview"
-    *ngFor="let article of (articles$ | async)"
-  >
+  <div class="article-preview" *ngFor="let article of (articles$ | async)">
     <div class="article-meta">
       <a [routerLink]="['/profiles', article.author.username]">
         <img [src]="article.author.image" />
@@ -15,7 +12,7 @@
         <a [routerLink]="['/profiles', article.author.username]" class="author">
           {{ article.author.username }}
         </a>
-        <span class="date">{{ article.createdat }}</span>
+        <span class="date">{{ article.createdate }}</span>
       </div>
       <div class="pull-xs-right">
         ADD TO FAVORITES

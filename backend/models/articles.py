@@ -12,7 +12,7 @@ class Article(Base):
     title = Column(String)
     description = Column(String)
     slug = Column(String, index=True)
-    createdat = Column(DateTime, default=datetime.utcnow)
-    updatedat = Column(DateTime, default=datetime.utcnow)
+    createdate = Column(DateTime, default=datetime.utcnow)
+    updatedate = Column(DateTime, default=datetime.utcnow)
 
     author = relationship("User", back_populates="articles")

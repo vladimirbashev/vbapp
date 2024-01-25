@@ -5,8 +5,8 @@ export interface ArticleInterface {
   title: string
   author: UserInterface
   slug: string
-  createdat: string
-  updatedat: string
+  createdate: string
+  updatedate: string
   // body: string
   // tagList: string[]
   // favorited: boolean

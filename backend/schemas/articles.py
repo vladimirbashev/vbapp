@@ -16,8 +16,8 @@ class Article(ArticleBase):
     id: int
     author: User
     slug: str
-    createdat: datetime
-    updatedat: datetime
+    createdate: datetime
+    updatedate: datetime
 
     class Config:
         orm_mode = True
