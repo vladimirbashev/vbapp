@@ -12,7 +12,7 @@ import {StoreModule} from "@ngrx/store";
 import {AuthService} from "./services/auth.service";
 import {RegisterEffect} from "./store/effects/register.effect";
 import {EffectsModule} from "@ngrx/effects";
-import {BackendErrorMessagesModule} from "../shared/modules/backend-error-messages/backend-error-messages.module";
+import {ErrorMessageModule} from "../shared/modules/error-message/error-message.module";
 import {PersistanceService} from "../shared/services/persistance.service";
 import {LoginComponent} from "./components/login/login.component";
 import {LoginEffect} from "./store/effects/login.effect";
@@ -51,7 +51,7 @@ const routes = [
     MatButtonModule,
     MatInputModule,
 
-    BackendErrorMessagesModule,
+    ErrorMessageModule,
   ],
   providers: [
     AuthService,

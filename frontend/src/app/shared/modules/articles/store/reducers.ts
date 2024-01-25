@@ -18,7 +18,8 @@ const articlesReducer = createReducer(
     getArticlesAction,
     (state): ArticlesStateInterface => ({
       ...state,
-      isLoading: true
+      isLoading: true,
+      error: null,
     })
   ),
   on(
@@ -31,9 +32,10 @@ const articlesReducer = createReducer(
   ),
   on(
     getArticlesFailureAction,
-    (state): ArticlesStateInterface => ({
+    (state, action): ArticlesStateInterface => ({
       ...state,
-      isLoading: false
+      isLoading: false,
+      error: action.error
     })
   )
 )

@@ -9,7 +9,7 @@ import {currentUserAction, currentUserFailureAction, currentUserSuccessAction} f
 const initialState: AuthStateInterface = {
   isSubmitting: false,
   currentUser: null,
-  backendErrors: null,
+  error: null,
   isLoggedIn: null
 }
 
@@ -20,7 +20,7 @@ const authReducer = createReducer(
     (state): AuthStateInterface => ({
       ...state,
       isSubmitting: true,
-      backendErrors: null,
+      error: null,
     })
   ),
   on(
@@ -35,7 +35,7 @@ const authReducer = createReducer(
     (state, action): AuthStateInterface => ({
       ...state,
       isSubmitting: false,
-      backendErrors: action.detail
+      error: action.error
     })
   ),
   on(
@@ -43,7 +43,7 @@ const authReducer = createReducer(
     (state): AuthStateInterface => ({
       ...state,
       isSubmitting: true,
-      backendErrors: null,
+      error: null,
     })
   ),
   on(
@@ -58,7 +58,7 @@ const authReducer = createReducer(
     (state, action): AuthStateInterface => ({
       ...state,
       isSubmitting: false,
-      backendErrors: action.detail
+      error: action.error
     })
   ),
   on(
@@ -66,7 +66,7 @@ const authReducer = createReducer(
     (state): AuthStateInterface => ({
       ...state,
       isSubmitting: true,
-      backendErrors: null,
+      error: null,
     })
   ),
   on(
@@ -74,7 +74,7 @@ const authReducer = createReducer(
     (state, action): AuthStateInterface => ({
       ...state,
       isSubmitting: false,
-      backendErrors: null,
+      error: null,
       currentUser: null
     })
   ),
@@ -83,7 +83,7 @@ const authReducer = createReducer(
     (state, action): AuthStateInterface => ({
       ...state,
       isSubmitting: false,
-      backendErrors: action.detail
+      error: action.error
     })
   ),
   on(
@@ -106,7 +106,7 @@ const authReducer = createReducer(
     (state, action): AuthStateInterface => ({
       ...state,
       isSubmitting: false,
-      backendErrors: action.detail,
+      error: action.error,
     })
   )
 )

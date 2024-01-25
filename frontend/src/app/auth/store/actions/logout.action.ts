@@ -16,5 +16,5 @@ export const logoutSuccessAction = createAction(
 
 export const logoutFailureAction = createAction(
   ActionTypes.LOGOUT_FAILURE,
-  props<{detail: any}>()
+  props<{error: any}>()
 )

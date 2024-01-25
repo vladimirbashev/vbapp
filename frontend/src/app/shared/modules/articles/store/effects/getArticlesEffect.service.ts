@@ -10,6 +10,7 @@ import {
   getArticlesFailureAction
 } from 'src/app/shared/modules/articles/store/actions/getArticlesAction'
 import {ArticleInterface} from "../../../../types/article.interface";
+import {HttpErrorResponse} from "@angular/common/http";
 
 
 @Injectable()
@@ -23,8 +24,8 @@ export class GetArticlesEffect {
             return getArticlesSuccessAction({articles})
           }),
 
-          catchError(() => {
-            return of(getArticlesFailureAction())
+          catchError((errorResponse: HttpErrorResponse) => {
+            return of(getArticlesFailureAction({error: errorResponse.error}))
           })
         )
       })

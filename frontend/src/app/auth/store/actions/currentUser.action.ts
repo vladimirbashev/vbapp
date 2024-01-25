@@ -13,5 +13,5 @@ export const currentUserSuccessAction = createAction(
 
 export const currentUserFailureAction = createAction(
   ActionTypes.CURRENT_USER_FAILURE,
-  props<{detail: any}>()
+  props<{error: any}>()
 )

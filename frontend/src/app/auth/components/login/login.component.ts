@@ -5,7 +5,7 @@ import {Observable} from 'rxjs'
 
 import {
   isSubmittingSelector,
-  backendErrorsSelector
+  errorSelector
 } from 'src/app/auth/store/selectors'
 import {TokenRequestInterface} from 'src/app/auth/types/tokenRequest.interface'
 import {loginAction} from 'src/app/auth/store/actions/login.action'
@@ -18,7 +18,7 @@ import {loginAction} from 'src/app/auth/store/actions/login.action'
 export class LoginComponent implements OnInit {
   form: FormGroup
   isSubmitting$: Observable<boolean>
-  backendErrors$: Observable<any>
+  error$: Observable<string>
 
   constructor(private fb: FormBuilder, private store: Store) {}
 
@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
 
   initializeValues(): void {
     this.isSubmitting$ = this.store.pipe(select(isSubmittingSelector))
-    this.backendErrors$ = this.store.pipe(select(backendErrorsSelector))
+    this.error$ = this.store.pipe(select(errorSelector))
   }
 
   initializeForm(): void {

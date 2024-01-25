@@ -21,7 +21,7 @@ export class RegisterEffect {
 
           catchError((errorResponse: HttpErrorResponse) => {
             return of(
-              registerFailureAction({detail: errorResponse.error.detail || errorResponse.error})
+              registerFailureAction({error: errorResponse.error})
             )
           })
         )

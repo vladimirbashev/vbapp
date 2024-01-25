@@ -24,7 +24,7 @@ export class LogoutEffect {
       }),
 
       catchError((errorResponse: HttpErrorResponse) => {
-        return of(logoutFailureAction({detail: errorResponse.error.detail || errorResponse.error}))
+        return of(logoutFailureAction({error: errorResponse.error}))
       })
     )
   )

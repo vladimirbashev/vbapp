@@ -7,6 +7,7 @@ import {EffectsModule} from "@ngrx/effects";
 import {GetArticlesEffect} from "./store/effects/getArticlesEffect.service";
 import {reducers} from "./store/reducers";
 import {RouterModule} from "@angular/router";
+import {ErrorMessageModule} from "../error-message/error-message.module";
 
 
 
@@ -18,7 +19,8 @@ import {RouterModule} from "@angular/router";
     CommonModule,
     EffectsModule.forFeature([GetArticlesEffect]),
     StoreModule.forFeature('articles', reducers),
-    RouterModule
+    RouterModule,
+    ErrorMessageModule
   ],
   exports: [
     ArticlesComponent

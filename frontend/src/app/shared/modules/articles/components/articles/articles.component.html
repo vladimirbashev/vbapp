@@ -1,6 +1,6 @@
 <div *ngIf="isLoading$ | async">Loading...</div>
 
-<div *ngIf="error$ | async">Some error happened...</div>
+<app-error-message [value]="error$"></app-error-message>
 
 <div *ngIf="articles$ | async">
   <div class="article-preview" *ngFor="let article of (articles$ | async)">

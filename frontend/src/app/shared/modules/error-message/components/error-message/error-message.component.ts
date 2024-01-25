@@ -3,11 +3,11 @@ import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
 
 @Component({
-  selector: 'app-backend-error-messages',
-  templateUrl: './backend-error-messages.component.html',
-  styleUrls: ['./backend-error-messages.component.scss']
+  selector: 'app-error-message',
+  templateUrl: './error-message.component.html',
+  styleUrls: ['./error-message.component.scss']
 })
-export class BackendErrorMessagesComponent implements OnInit{
+export class ErrorMessageComponent implements OnInit{
   @Input('value') value: Observable<any>
   message: Observable<string>
 

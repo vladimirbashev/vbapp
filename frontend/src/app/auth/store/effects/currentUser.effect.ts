@@ -28,7 +28,7 @@ export class CurrentUserEffect {
           }),
 
           catchError((errorResponse: HttpErrorResponse) => {
-            return of(currentUserFailureAction({detail: errorResponse.error.detail || errorResponse.error}))
+            return of(currentUserFailureAction({error: errorResponse.error}))
           })
         )
       })
