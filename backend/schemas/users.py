@@ -15,8 +15,8 @@ class UserCreate(UserBase):
 
 class User(UserBase):
     id: int
-    createdat: datetime
-    updatedat: datetime
+    createdate: datetime
+    updatedate: datetime
     bio: Optional[str] = None
     image: Optional[str] = None
 

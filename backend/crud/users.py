@@ -28,8 +28,8 @@ def create_user(db: Session, user: schemas.UserCreate):
         email=user.email,
         username=user.username,
         password=get_hashed_password(user.password),
-        createdat=datetime.datetime.now(),
-        updatedat=datetime.datetime.now()
+        createdate=datetime.datetime.now(),
+        updatedate=datetime.datetime.now()
     )
     db.add(db_user)
     db.commit()
