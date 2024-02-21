@@ -15,6 +15,7 @@ import {PersistanceService} from "./shared/services/persistance.service";
 import {AuthInterceptor} from "./shared/services/authinterceptor.service";
 import {AppBarModule} from "./shared/modules/app-bar/app-bar.module";
 import {GlobalFeedModule} from "./global-feed/global-feed.module";
+import {BannerModule} from "./shared/modules/banner/banner.module";
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import {GlobalFeedModule} from "./global-feed/global-feed.module";
 
     AuthModule,
     AppBarModule,
+    BannerModule,
     GlobalFeedModule
   ],
   providers: [
