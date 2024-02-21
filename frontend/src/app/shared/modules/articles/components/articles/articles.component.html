@@ -2,28 +2,55 @@
 
 <app-error-message [value]="error$"></app-error-message>
 
+
 <div *ngIf="articles$ | async">
-  <div class="article-preview" *ngFor="let article of (articles$ | async)">
-    <div class="article-meta">
-      <a [routerLink]="['/profiles', article.author.username]">
-        <img [src]="article.author.image" />
-      </a>
-      <div class="info">
-        <a [routerLink]="['/profiles', article.author.username]" class="author">
-          {{ article.author.username }}
-        </a>
-        <span class="date">{{ article.createdate }}</span>
-      </div>
-      <div class="pull-xs-right">
-        ADD TO FAVORITES
-      </div>
-    </div>
-    <a [routerLink]="['/aricles', article.slug]" class="preview-link">
-      <h1>{{ article.title }}</h1>
-      <p>{{ article.description }}</p>
-      <span>Read more..</span>
-      HERE LIST OF TAGS
-    </a>
-  </div>
-  PAGINATION
+  <mat-card class="example-card" *ngFor="let article of (articles$ | async)">
+    <mat-card-header>
+      <mat-card-title>{{ article.title }}</mat-card-title>
+      <mat-card-subtitle>
+<!--        <button type="button" mat-button color="accent" [routerLink]="['/profiles', article.author.username]">-->
+<!--          <img [src]="article.author.image" />-->
+<!--        </button>-->
+        <button type="button" mat-button [routerLink]="['/profiles', article.author.username]">
+          {{ article.author.email }}
+        </button>
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      {{ article.description }}
+    </mat-card-content>
+    <mat-card-footer>
+      <span> {{article.createdate}}</span>
+    </mat-card-footer>
+    <mat-card-actions>
+      <button type="button" mat-button>add to favorites</button>
+    </mat-card-actions>
+  </mat-card>
 </div>
+
+
+<!--<div *ngIf="articles$ | async">-->
+<!--  <div class="article-preview" *ngFor="let article of (articles$ | async)">-->
+<!--    <div class="article-meta">-->
+<!--      <a [routerLink]="['/profiles', article.author.username]">-->
+<!--        <img [src]="article.author.image" />-->
+<!--      </a>-->
+<!--      <div class="info">-->
+<!--        <a [routerLink]="['/profiles', article.author.username]" class="author">-->
+<!--          {{ article.author.username }}-->
+<!--        </a>-->
+<!--        <span class="date">{{ article.createdate }}</span>-->
+<!--      </div>-->
+<!--      <div class="pull-xs-right">-->
+<!--        ADD TO FAVORITES-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <a [routerLink]="['/aricles', article.slug]" class="preview-link">-->
+<!--      <h1>{{ article.title }}</h1>-->
+<!--      <p>{{ article.description }}</p>-->
+<!--      <span>Read more..</span>-->
+<!--      HERE LIST OF TAGS-->
+<!--    </a>-->
+<!--  </div>-->
+<!--  PAGINATION-->
+<!--</div>-->
