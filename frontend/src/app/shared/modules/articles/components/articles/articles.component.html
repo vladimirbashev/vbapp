@@ -10,7 +10,7 @@
 <!--        <button type="button" mat-button color="accent" [routerLink]="['/profiles', article.author.username]">-->
 <!--          <img [src]="article.author.image" />-->
 <!--        </button>-->
-        <button type="button" mat-button [routerLink]="['/profiles', article.author.username]">
+        <button type="button" color="primary" mat-button [routerLink]="['/profiles', article.author.username]">
           {{ article.author.email }}
         </button>
       </mat-card-subtitle>
@@ -18,12 +18,12 @@
     <mat-card-content>
       {{ article.description }}
     </mat-card-content>
-    <mat-card-footer>
-      <span> {{article.createdate}}</span>
-    </mat-card-footer>
     <mat-card-actions>
-      <button type="button" mat-button>add to favorites</button>
+      <button type="button" color="primary" mat-button>add to favorites</button>
     </mat-card-actions>
+    <mat-card-footer>
+      <span class="date">{{article.createdate}}</span>
+    </mat-card-footer>
   </mat-card>
   <mat-paginator [length]="100"
                  [pageSize]="10"
