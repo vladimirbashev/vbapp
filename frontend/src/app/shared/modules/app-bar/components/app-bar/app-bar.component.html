@@ -1,23 +1,23 @@
-<mat-toolbar>
+<mat-toolbar class="banner">
   <span>vbapp</span>
-  <button mat-button color="primary" [routerLink]="['/']">
+  <button mat-button color="accent" [routerLink]="['/']">
     Home
   </button>
-  <button *ngIf="isLoggedIn$ | async" mat-button color="primary" [routerLink]="['/articles/new']">
+  <button *ngIf="isLoggedIn$ | async" mat-button color="accent" [routerLink]="['/articles/new']">
     New Post
   </button>
   <span class="flexExpand"></span>
-  <button *ngIf="isLoggedIn$ | async" mat-button color="primary"
+  <button *ngIf="isLoggedIn$ | async" mat-button color="accent"
           [routerLink]="['/profiles', (currentUser$ | async).id]">
     {{(currentUser$ | async).email}}
   </button>
-  <button *ngIf="isLoggedIn$ | async" mat-button color="primary" (click)="onLogout()">
+  <button *ngIf="isLoggedIn$ | async" mat-button color="accent" (click)="onLogout()">
     Log Out
   </button>
-  <button *ngIf="isAnonymous$ | async" mat-button color="primary" [routerLink]="['/login']">
+  <button *ngIf="isAnonymous$ | async" mat-button color="accent" [routerLink]="['/login']">
     Sign In
   </button>
-  <button *ngIf="isAnonymous$ | async" mat-button color="primary" [routerLink]="['/register']">
+  <button *ngIf="isAnonymous$ | async" mat-button color="accent" [routerLink]="['/register']">
     Register
   </button>
 </mat-toolbar>
