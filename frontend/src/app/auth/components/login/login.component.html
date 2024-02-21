@@ -1,7 +1,7 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
   <div fxLayout="column" fxLayoutAlign="space-around center">
     <h1>Sign In</h1>
-    <button mat-button color="accent" [routerLink]="['/register']">
+    <button type="button" mat-button color="accent" [routerLink]="['/register']" (keydown.enter)="$event.preventDefault()">
       Need an account?
     </button>
     <app-error-message [value]="error$"></app-error-message>
