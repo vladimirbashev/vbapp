@@ -10,6 +10,7 @@ import {RouterModule} from "@angular/router";
 import {ErrorMessageModule} from "../error-message/error-message.module";
 import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 
 
@@ -24,7 +25,8 @@ import {MatButtonModule} from "@angular/material/button";
     RouterModule,
     ErrorMessageModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatPaginatorModule
   ],
   exports: [
     ArticlesComponent

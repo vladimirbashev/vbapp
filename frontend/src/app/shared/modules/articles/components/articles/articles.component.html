@@ -26,31 +26,11 @@
       <button type="button" mat-button>add to favorites</button>
     </mat-card-actions>
   </mat-card>
+  <mat-paginator [length]="100"
+                 [pageSize]="10"
+                 [pageSizeOptions]="[5, 10, 25, 100]"
+                 (page)="handlePageEvent($event)"
+                 aria-label="Select page">
+  </mat-paginator>
 </div>
 
-
-<!--<div *ngIf="articles$ | async">-->
-<!--  <div class="article-preview" *ngFor="let article of (articles$ | async)">-->
-<!--    <div class="article-meta">-->
-<!--      <a [routerLink]="['/profiles', article.author.username]">-->
-<!--        <img [src]="article.author.image" />-->
-<!--      </a>-->
-<!--      <div class="info">-->
-<!--        <a [routerLink]="['/profiles', article.author.username]" class="author">-->
-<!--          {{ article.author.username }}-->
-<!--        </a>-->
-<!--        <span class="date">{{ article.createdate }}</span>-->
-<!--      </div>-->
-<!--      <div class="pull-xs-right">-->
-<!--        ADD TO FAVORITES-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <a [routerLink]="['/aricles', article.slug]" class="preview-link">-->
-<!--      <h1>{{ article.title }}</h1>-->
-<!--      <p>{{ article.description }}</p>-->
-<!--      <span>Read more..</span>-->
-<!--      HERE LIST OF TAGS-->
-<!--    </a>-->
-<!--  </div>-->
-<!--  PAGINATION-->
-<!--</div>-->
