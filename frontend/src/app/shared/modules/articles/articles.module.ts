@@ -11,6 +11,7 @@ import {ErrorMessageModule} from "../error-message/error-message.module";
 import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
 import {MatPaginatorModule} from "@angular/material/paginator";
+import {FlexModule} from "@angular/flex-layout";
 
 
 
@@ -26,7 +27,8 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     ErrorMessageModule,
     MatCardModule,
     MatButtonModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    FlexModule
   ],
   exports: [
     ArticlesComponent

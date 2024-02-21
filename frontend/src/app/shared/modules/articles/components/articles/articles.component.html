@@ -2,9 +2,8 @@
 
 <app-error-message [value]="error$"></app-error-message>
 
-
-<div *ngIf="articles$ | async">
-  <mat-card class="example-card" *ngFor="let article of (articles$ | async)">
+<div *ngIf="articles$ | async" fxLayout="column" fxLayoutAlign="space-around center">
+  <mat-card *ngFor="let article of (articles$ | async)">
     <mat-card-header>
       <mat-card-title>{{ article.title }}</mat-card-title>
       <mat-card-subtitle>
