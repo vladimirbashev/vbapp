@@ -1,3 +1,5 @@
+from typing import List
+
 from pydantic import BaseModel
 from schemas.users import User
 from datetime import datetime
@@ -21,3 +23,9 @@ class Article(ArticleBase):
 
     class Config:
         orm_mode = True
+
+
+class Articles(BaseModel):
+    items: List[Article]
+    count: int
+

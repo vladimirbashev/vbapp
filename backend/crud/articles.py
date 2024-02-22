@@ -8,6 +8,10 @@ def get_articles(db: Session, skip: int = 0, limit: int = 100):
     return db.query(models.Article).offset(skip).limit(limit).all()
 
 
+def get_articles_count(db: Session):
+    return db.query(models.Article).count()
+
+
 def create_user_article(db: Session, article: schemas.ArticleCreate, user_id: int):
     db_article = models.Article(**article.dict(), author_id=user_id)
     db.add(db_article)

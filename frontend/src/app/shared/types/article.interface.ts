@@ -12,3 +12,8 @@ export interface ArticleInterface {
   // favorited: boolean
   // favoritesCount: number
 }
+
+export interface ArticlesInterface {
+  items: ArticleInterface[]
+  count: number
+}

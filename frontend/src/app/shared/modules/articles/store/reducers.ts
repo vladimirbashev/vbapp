@@ -8,6 +8,7 @@ import {ArticlesStateInterface} from "../types/articlesState.interface";
 
 const initialState: ArticlesStateInterface = {
   data: null,
+  count: null,
   isLoading: false,
   error: null
 }
@@ -27,7 +28,8 @@ const articlesReducer = createReducer(
     (state, action): ArticlesStateInterface => ({
       ...state,
       isLoading: false,
-      data: action.articles
+      data: action.articles.items,
+      count: action.articles.count
     })
   ),
   on(

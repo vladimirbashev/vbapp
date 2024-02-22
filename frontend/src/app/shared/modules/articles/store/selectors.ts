@@ -21,3 +21,9 @@ export const articlesSelector = createSelector(
   articlesFeatureSelector,
   (articlesState: ArticlesStateInterface) => articlesState.data
 )
+
+export const articlesCountSelector = createSelector(
+  articlesFeatureSelector,
+  (articlesState: ArticlesStateInterface) => articlesState.count
+)
+

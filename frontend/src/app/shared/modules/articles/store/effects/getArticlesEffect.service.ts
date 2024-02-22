@@ -9,7 +9,7 @@ import {
   getArticlesSuccessAction,
   getArticlesFailureAction
 } from 'src/app/shared/modules/articles/store/actions/getArticlesAction'
-import {ArticleInterface} from "../../../../types/article.interface";
+import {ArticleInterface, ArticlesInterface} from "../../../../types/article.interface";
 import {HttpErrorResponse} from "@angular/common/http";
 
 
@@ -20,7 +20,7 @@ export class GetArticlesEffect {
       ofType(getArticlesAction),
       switchMap(({url}) => {
         return this.articlesService.getArticles(url).pipe(
-          map((articles:  ArticleInterface[]) => {
+          map((articles:  ArticlesInterface) => {
             return getArticlesSuccessAction({articles})
           }),
 

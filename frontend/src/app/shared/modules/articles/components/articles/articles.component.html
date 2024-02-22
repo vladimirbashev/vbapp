@@ -24,7 +24,7 @@
       <span class="date">{{article.createdate}}</span>
     </mat-card-footer>
   </mat-card>
-  <mat-paginator [length]="100"
+  <mat-paginator [length]="articlesCount$ | async"
                  [pageSize]="10"
                  [pageSizeOptions]="[5, 10, 25, 100]"
                  (page)="handlePageEvent($event)"

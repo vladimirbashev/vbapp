@@ -4,4 +4,5 @@ export interface ArticlesStateInterface {
   isLoading: boolean
   error: any
   data:  ArticleInterface[] | null
+  count: number
 }
