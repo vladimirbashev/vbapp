@@ -1,34 +1,36 @@
-<app-loading [value]="isLoading$"></app-loading>
 <app-error-message [value]="error$"></app-error-message>
 
-<div *ngIf="articles$ | async" fxLayout="column" fxLayoutAlign="space-around center">
-  <mat-card *ngFor="let article of (articles$ | async)">
-    <mat-card-header>
-      <mat-card-title>{{ article.title }}</mat-card-title>
-      <mat-card-subtitle>
-<!--        <button type="button" mat-button color="accent" [routerLink]="['/profiles', article.author.username]">-->
-<!--          <img [src]="article.author.image" />-->
-<!--        </button>-->
-        <button type="button" color="primary" mat-button [routerLink]="['/profiles', article.author.username]">
-          {{ article.author.email }}
-        </button>
-      </mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      {{ article.description }}
-    </mat-card-content>
-    <mat-card-actions>
-      <button type="button" color="primary" mat-button>add to favorites</button>
-    </mat-card-actions>
-    <mat-card-footer>
-      <span class="date">{{article.createdate}}</span>
-    </mat-card-footer>
-  </mat-card>
+<div fxLayout="column" fxLayoutAlign="space-around center">
   <mat-paginator [length]="articlesCount$ | async"
                  [pageSize]="10"
                  [pageSizeOptions]="[5, 10, 25, 100]"
                  (page)="handlePageEvent($event)"
                  aria-label="Select page">
   </mat-paginator>
+  <app-loading [value]="isLoading$"></app-loading>
+  <div *ngIf="!(isLoading$ | async)">
+    <mat-card *ngFor="let article of (articles$ | async)">
+      <mat-card-header>
+        <mat-card-title>{{ article.title }}</mat-card-title>
+        <mat-card-subtitle>
+  <!--        <button type="button" mat-button color="accent" [routerLink]="['/profiles', article.author.username]">-->
+  <!--          <img [src]="article.author.image" />-->
+  <!--        </button>-->
+          <button type="button" color="primary" mat-button [routerLink]="['/profiles', article.author.username]">
+            {{ article.author.email }}
+          </button>
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        {{ article.description }}
+      </mat-card-content>
+      <mat-card-actions>
+        <button type="button" color="primary" mat-button>add to favorites</button>
+      </mat-card-actions>
+      <mat-card-footer>
+        <span class="date">{{article.createdate}}</span>
+      </mat-card-footer>
+    </mat-card>
+  </div>
 </div>
 

@@ -20,7 +20,6 @@ const articlesReducer = createReducer(
     getArticlesAction,
     (state): ArticlesStateInterface => ({
       ...state,
-      data: null,
       isLoading: true,
       error: null,
     })
