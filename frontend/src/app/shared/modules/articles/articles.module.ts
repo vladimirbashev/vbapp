@@ -12,6 +12,7 @@ import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {FlexModule} from "@angular/flex-layout";
+import {LoadingModule} from "../loading/loading.module";
 
 
 
@@ -25,6 +26,7 @@ import {FlexModule} from "@angular/flex-layout";
     StoreModule.forFeature('articles', reducers),
     RouterModule,
     ErrorMessageModule,
+    LoadingModule,
     MatCardModule,
     MatButtonModule,
     MatPaginatorModule,
