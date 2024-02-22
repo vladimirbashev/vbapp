@@ -4,8 +4,8 @@ from schemas import articles as schemas
 from models import articles as models
 
 
-def get_articles(db: Session, skip: int = 0, limit: int = 100):
-    return db.query(models.Article).offset(skip).limit(limit).all()
+def get_articles(db: Session, skip: int = 0, limit: int = 10):
+    return db.query(models.Article).order_by(models.Article.id).offset(skip).limit(limit).all()
 
 
 def get_articles_count(db: Session):
