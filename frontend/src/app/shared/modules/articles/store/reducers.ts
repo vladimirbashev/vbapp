@@ -6,6 +6,7 @@ import {
 } from 'src/app/shared/modules/articles/store/actions/getArticlesAction'
 import {ArticlesStateInterface} from "../types/articlesState.interface";
 
+
 const initialState: ArticlesStateInterface = {
   data: null,
   count: null,
@@ -19,6 +20,7 @@ const articlesReducer = createReducer(
     getArticlesAction,
     (state): ArticlesStateInterface => ({
       ...state,
+      data: null,
       isLoading: true,
       error: null,
     })

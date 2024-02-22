@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools'
 import { StoreModule } from '@ngrx/store';
-
+import {routerReducer, StoreRouterConnectingModule} from '@ngrx/router-store';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import {AuthModule} from "./auth/auth.module";
@@ -27,11 +27,12 @@ import {BannerModule} from "./shared/modules/banner/banner.module";
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot({router: routerReducer}, {}),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production
     }),
+    StoreRouterConnectingModule.forRoot(),
     StoreDevtoolsModule.instrument({maxAge: 25, logOnly: !isDevMode()}),
     EffectsModule.forRoot([]),
 
