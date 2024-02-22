@@ -1,8 +1,9 @@
-@use '@angular/material' as mat;
-
-$my-palette: mat.define-palette(mat.$red-palette);
+@import "src/assets/styles/_variables";;
 
 .errors {
-  background: mat.get-color-from-palette($my-palette, 'default');
-  color: mat.get-color-from-palette($my-palette, 'default-contrast');
+  background: $warn;
+  color: $warn-contrast;
+  border-radius: 3px;
+  padding: 10px;
+  margin: 10px;
 }
